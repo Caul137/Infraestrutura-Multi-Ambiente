@@ -4,15 +4,15 @@ module "ec2_instance" {
 
   for_each = toset(["one", "two", "three"])
 
-  name = "instance-${each.key}"
+  name = "${var.env_name}-app"
 
-  instance_type = "t3.micro"
+  instance_type = var.instance_type
   key_name      = "user1"
   monitoring    = true
-  subnet_id     = "subnet-eddcdzz4"
+  subnet_id     = var.subnet_id
 
   tags = {
     Terraform   = "true"
-    Environment = "dev"
+    Environment = var.env_name
   }
 }
