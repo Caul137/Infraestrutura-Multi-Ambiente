@@ -3,7 +3,7 @@
 module "alb" {
   source = "terraform-aws-modules/alb/aws"
 
-  name    = var.env_name
+  name    = "${var.env_name}-alb"
   vpc_id  = var.vpc_id
   subnets = var.subnets
 
@@ -62,7 +62,7 @@ module "alb" {
       protocol         = "HTTP"
       port             = 80
       target_type      = "instance"
-      target_id        = "i-0f6d38a07d50d080f"
+      target_id        =  var.instance_id
     }
   }
 

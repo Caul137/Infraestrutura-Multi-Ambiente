@@ -1,3 +1,4 @@
+
 module "vpc" {
   source          = "../../modules/vpc"
   env_name        =  "prod"
@@ -12,7 +13,6 @@ module "ec2" {
   env_name = "prod"
   instance_type = t3.medium
   subnet_id = module.ec2.public_subnets[0]
-
 }
 
 module "alb" {
