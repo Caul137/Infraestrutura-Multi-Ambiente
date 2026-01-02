@@ -1,19 +1,9 @@
-variable "env_name" {
+variable "env_name" {}
 
-}
+variable "vpc_cidr" {}
 
-variable "vpc_cidr" {
-   
-}
+variable "azs" {}
 
-variable "azs" {  
+variable "private_subnets" {}
 
-}
-
-variable "private_subnets" {
-   
-}
-
-variable "public_subnets" {
-   
-}
+variable "public_subnets" {}

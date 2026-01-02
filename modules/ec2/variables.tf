@@ -1,15 +1,7 @@
-variable "env_name" {
+variable "env_name" {}
 
-}
+variable "instance_type" {}
 
-variable "instance_type" {
+variable "subnet_id" {}
 
-}
-
-variable "subnet_id" {
-
-}
-
-variable "secret_arn" {
-  
-}
+variable "secret_arn" {}

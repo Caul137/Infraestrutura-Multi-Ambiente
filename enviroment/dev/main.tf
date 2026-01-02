@@ -1,5 +1,3 @@
-
-
 module "vpc" {
   source          = "../../modules/vpc"
   env_name        =  "dev"
@@ -12,7 +10,7 @@ module "vpc" {
 module "ec2" {
   source = "../../modules/ec2"
   env_name = "dev"
-  instance_type = t3.micro
+  instance_type = "t3.micro"
   subnet_id = module.vpc.public_subnets[0]
   secret_arn = "arn:aws:secretsmanager:us-east-1:123:secret:app-dev-api-password"
 }
@@ -22,5 +20,5 @@ module "alb" {
   env_name = "dev"
   vpc_id   = module.vpc.vpc_id
   subnets = module.vpc.public_subnets
-  instance_id = modulue.ec2.id
+  instance_id = modulue.ec2.instance_id
 }

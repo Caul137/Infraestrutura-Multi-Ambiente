@@ -47,5 +47,5 @@ module "ec2_instance" {
 }
 
 output "instance_id" {
-  value = module.ec2.id
+  value = module.ec2_instance.id
 }

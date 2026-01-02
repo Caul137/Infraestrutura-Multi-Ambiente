@@ -11,8 +11,9 @@ module "vpc" {
 module "ec2" {
   source = "../../modules/ec2"
   env_name = "prod"
-  instance_type = t3.medium
-  subnet_id = module.ec2.public_subnets[0]
+  instance_type = "t3.medium"
+  subnet_id = module.vpc.public_subnets[0]
+ secret_arn = "arn:aws:secretsmanager:us-east-1:123:secret:app-prod-api-password"
 }
 
 module "alb" {
@@ -20,5 +21,5 @@ module "alb" {
   env_name = "prod"
   vpc_id   = module.alb.vpc_id
   subnets = module.alb.public_subnets
-  instance_id = modulue.ec2.id
+  instance_id = modulue.ec2.instance_id
 }
