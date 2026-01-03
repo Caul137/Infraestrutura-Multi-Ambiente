@@ -7,7 +7,7 @@ resource "aws_security_group" "ec2_sg" {
     from_port       = 80
     to_port         = 80
     protocol        = "tcp"
-    security_groups = [var.alb_sg_id]
+    cidr_blocks = ["10.0.0.0/8"]
   }
 
   egress {

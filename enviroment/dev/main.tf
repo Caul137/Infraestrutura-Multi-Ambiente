@@ -14,10 +14,11 @@ module "ec2" {
   subnet_id = module.vpc.public_subnets[0]
   secret_arn = "arn:aws:secretsmanager:us-east-1:123:secret:app-dev-api-password"
   vpc_id = module.vpc.vpc_id
-  alb_sg_id = module.alb.alb_sg_id
+ 
 }
 
 module "alb" {
+  depends_on = [ module.ec2 ]
   source   = "../../modules/alb"
   env_name = "dev"
   vpc_id   = module.vpc.vpc_id

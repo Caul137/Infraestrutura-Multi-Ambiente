@@ -32,7 +32,7 @@ module "alb" {
   }
 
   access_logs = {
-    bucket = "my-alb-logs"
+    bucket = aws_s3_bucket.alb_logs.id
   }
 
   listeners = {
@@ -71,6 +71,3 @@ module "alb" {
   }
 }
 
-output "alb_sg_id" {
-  value = module.alb.security_group_id
-}
