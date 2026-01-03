@@ -25,6 +25,10 @@ resource "aws_iam_role_policy" "secrets_policy" {
       Effect   = "Allow"
       Action   = ["secretsmanager:GetSecretValue"]
       Resource = var.secret_arn
+    },{
+       Effect   = "Allow"
+       Action   = ["kms:Decrypt"]
+       Resource = aws_kms_key.secrets_key.arn
     }]
   })
 }
@@ -39,6 +43,8 @@ module "ec2_instance" {
   instance_type = var.instance_type
 
   subnet_id     = var.subnet_id
+
+  vpc_security_group_ids = [aws_security_group.ec2_sg.id]
 
   tags = {
     Terraform   = "true"

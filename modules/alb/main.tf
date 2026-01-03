@@ -70,3 +70,7 @@ module "alb" {
     Project     = "Example"
   }
 }
+
+output "alb_sg_id" {
+  value = module.alb.security_group_id
+}
