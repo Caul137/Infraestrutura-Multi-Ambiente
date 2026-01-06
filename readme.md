@@ -35,4 +35,15 @@
 
  **Obs**: Se quiser rodar em outro ambiente, basta entrar na pasta dele e mudar o AWS_PROFILE. **Ex:** cd enviroment/prod ``bash: export AWS_PROFILE=prod`` 
 
+---
 
+# 📚 Funcionamento
+
+
+
+
+
+
+
+
+---
