@@ -66,8 +66,6 @@ module "alb" {
     }
   }
 
-  tags = {
-    Project     = "Example"
-  }
+ 
 }
 
