@@ -15,7 +15,7 @@ module "ec2" {
   subnet_id = module.vpc.public_subnets[0]
   secret_arn = "arn:aws:secretsmanager:us-east-1:123:secret:app-staging-api-password"
   vpc_id = module.vpc.vpc_id
-
+  secret_password = var.secret_password
 }
 
 module "alb" {

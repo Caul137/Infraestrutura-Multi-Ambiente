@@ -1,3 +1,7 @@
+resource "aws_acm_certificate" "cert" {
+  domain_name       = "app.${var.env_name}.site.com"
+  validation_method = "DNS"
+}
 
 
 module "alb" {
@@ -7,7 +11,7 @@ module "alb" {
   vpc_id  = var.vpc_id
   subnets = var.subnets
 
-  # Security Group
+ 
   security_group_ingress_rules = {
     all_http = {
       from_port   = 80
@@ -48,7 +52,7 @@ module "alb" {
     ex-https = {
       port            = 443
       protocol        = "HTTPS"
-      certificate_arn = "arn:aws:iam::123456789012:server-certificate/test_cert-123456789012"
+      certificate_arn = aws_acm_certificate.cert.arn
 
       forward = {
         target_group_key = "ex-instance"

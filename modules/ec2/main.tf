@@ -34,11 +34,23 @@ resource "aws_iam_role_policy" "secrets_policy" {
 }
 
 
+data "aws_ami" "amazon_linux" {
+  most_recent = true
+  owners      = ["amazon"]
+
+  filter {
+    name   = "name"
+    values = ["al2023-ami-*-x86_64"]
+  }
+}
+
 
 module "ec2_instance" {
   source  = "terraform-aws-modules/ec2-instance/aws"
 
   name = "${var.env_name}-app"
+
+  ami = data.aws_ami.amazon_linux.id
 
   instance_type = var.instance_type
 
@@ -46,10 +58,11 @@ module "ec2_instance" {
 
   vpc_security_group_ids = [aws_security_group.ec2_sg.id]
 
+  iam_instance_profile = aws_iam_instance_profile.ec2_profile.name
+
   tags = {
     Terraform   = "true"
   }
-  iam_instance_profile = aws_iam_instance_profile.ec2_profile.name
 }
 
 output "instance_id" {
