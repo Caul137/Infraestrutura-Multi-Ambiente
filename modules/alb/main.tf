@@ -11,7 +11,7 @@ module "alb" {
   vpc_id  = var.vpc_id
   subnets = var.subnets
 
- 
+
   security_group_ingress_rules = {
     all_http = {
       from_port   = 80
@@ -62,14 +62,14 @@ module "alb" {
 
   target_groups = {
     ex-instance = {
-      name_prefix      = "h1"
-      protocol         = "HTTP"
-      port             = 80
-      target_type      = "instance"
-      target_id        =  var.instance_id
+      name_prefix = "h1"
+      protocol    = "HTTP"
+      port        = 80
+      target_type = "instance"
+      target_id   = var.instance_id
     }
   }
 
- 
+
 }
 

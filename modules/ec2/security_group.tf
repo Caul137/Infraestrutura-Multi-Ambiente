@@ -3,10 +3,10 @@ resource "aws_security_group" "ec2_sg" {
   vpc_id = var.vpc_id
 
   ingress {
-    description     = "Allow HTTP from ALB only"
-    from_port       = 80
-    to_port         = 80
-    protocol        = "tcp"
+    description = "Allow HTTP from ALB only"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
     cidr_blocks = ["10.0.0.0/8"]
   }
 

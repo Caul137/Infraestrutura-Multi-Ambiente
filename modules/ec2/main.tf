@@ -25,10 +25,10 @@ resource "aws_iam_role_policy" "secrets_policy" {
       Effect   = "Allow"
       Action   = ["secretsmanager:GetSecretValue"]
       Resource = var.secret_arn
-    },{
-       Effect   = "Allow"
-       Action   = ["kms:Decrypt"]
-       Resource = aws_kms_key.secrets_key.arn
+      }, {
+      Effect   = "Allow"
+      Action   = ["kms:Decrypt"]
+      Resource = aws_kms_key.secrets_key.arn
     }]
   })
 }
@@ -46,7 +46,7 @@ data "aws_ami" "amazon_linux" {
 
 
 module "ec2_instance" {
-  source  = "terraform-aws-modules/ec2-instance/aws"
+  source = "terraform-aws-modules/ec2-instance/aws"
 
   name = "${var.env_name}-app"
 
@@ -54,14 +54,14 @@ module "ec2_instance" {
 
   instance_type = var.instance_type
 
-  subnet_id     = var.subnet_id
+  subnet_id = var.subnet_id
 
   vpc_security_group_ids = [aws_security_group.ec2_sg.id]
 
   iam_instance_profile = aws_iam_instance_profile.ec2_profile.name
 
   tags = {
-    Terraform   = "true"
+    Terraform = "true"
   }
 }
 

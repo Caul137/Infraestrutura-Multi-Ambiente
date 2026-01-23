@@ -21,7 +21,7 @@
 
 ---
 
-# 🖥 Rodar
+# 🖥 Configuração - rodar
 
  * Rode **terraform init** para inicializar o **terraform** 
 
@@ -131,3 +131,9 @@ $env:TF_VAR_api_password="senha"
 - ALB depende da VPC e EC2
 
 ---
+
+
+
+#### Importante:
+
+Como eu não tenho uma conta AWS registrada(não consigo ter), então não posso testar o projeto, deve conter alguns erros ou talvez não suba.
